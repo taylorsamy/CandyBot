@@ -2,7 +2,7 @@ package org.candyShop.eventListeners;
 
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.candyShop.commands.adminCommands.EggHunt;
+import org.candyShop.commands.adminCommands.TreasureHunt;
 import org.candyShop.helpers.FileUtils;
 
 import javax.annotation.Nonnull;
@@ -20,17 +20,23 @@ public class ReactionListener extends ListenerAdapter {
 
         if (!event.getUser().isBot()) {
 
-            System.out.println(event.getReactionEmote().getAsCodepoints());
             if (event.getMessageId().equals(messageID)) {
-                event.getChannel().sendMessage("Egg found").queue();
+
+                if (event.getTextChannel().retrieveMessageById(messageID).complete().getAuthor().isBot()) {
+                    if (TreasureHunt.emote[2] != null) {
+                        event.getTextChannel().retrieveMessageById(messageID).complete().editMessage(TreasureHunt.emote[2].getAsMention()).complete();
+                    } else {
+                        event.getTextChannel().retrieveMessageById(messageID).complete().delete().queue();
+                    }
+                }
+                event.getChannel().sendMessage(TreasureHunt.treasureName + " found by " + event.getUser().getAsTag()).queue();
 
                 event.getChannel().retrieveMessageById(messageID).complete().clearReactions().complete();
 
-                if (EggHunt.eggs.containsKey(event.getUserId())) {
-                   EggHunt.eggs.put(event.getUserId(), EggHunt.eggs.get(event.getUserId()) + 1);
-                } else {
-                    EggHunt.eggs.put(event.getUserId(),1);
-                }
+
+                FileUtils.writeJSON("treasure", event.getUserId(), 1);
+
+
                 event.getJDA().removeEventListener(this);
 
             }

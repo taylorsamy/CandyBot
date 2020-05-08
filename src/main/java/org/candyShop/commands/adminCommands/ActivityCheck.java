@@ -20,7 +20,7 @@ public class ActivityCheck extends Command {
     }
 
     @Override
-    protected void execute(CommandEvent event) {
+    protected void execute(CommandEvent event) { //TODO add roles
         JSONParser parser = new JSONParser();
 
         try (Reader reader = new FileReader("src/main/resources/members.json")) {
