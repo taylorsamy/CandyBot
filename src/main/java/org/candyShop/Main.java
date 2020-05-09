@@ -44,6 +44,7 @@ public class Main extends ListenerAdapter {
         client.addCommand(new SetEmote());
         client.addCommand(new TreasureHelp());
         client.addCommand(new JokeWarning());
+        client.addCommand(new ReloadRoles());
 
         client.setActivity(Activity.watching("All the littles hunt for treasure!"));
 
