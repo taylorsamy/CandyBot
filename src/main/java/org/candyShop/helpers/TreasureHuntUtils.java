@@ -32,8 +32,8 @@ public class TreasureHuntUtils {
     private static Color[] colours = new Color[20];
 
     static{
-        colours[0] = new Color(0xCE, 0x14, 0x1F);
-        colours[1] = new Color(0xE5, 0x7C, 0x00);
+        colours[0] = new Color(0x37, 0x63, 0x69);
+        colours[1] = new Color(0xf1, 0xa9, 0x5b);
         colours[2] = new Color(0xe5, 0xe3, 0x3F);
         colours[3] = new Color(0x24, 0xc4, 0x42);
         colours[4] = new Color(0x35, 0x7E, 0xCD);
