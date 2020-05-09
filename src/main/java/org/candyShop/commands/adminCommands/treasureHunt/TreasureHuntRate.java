@@ -19,26 +19,28 @@ public class TreasureHuntRate extends Command {
     protected void execute(CommandEvent event) {
 
         boolean access = CandyBotUtils.isAdmin(event.getMember());
+        try {
+            if (access) {
+
+                String[] args = event.getArgs().split(" ");
+                if (args.length > 1 || !args[0].matches("^[0-9]*$")) {
+                    event.reply("Incorrect Usage.");
+
+                    EmbedBuilder eb = new EmbedBuilder();
+                    eb.setTitle("!" + name);
+                    eb.addField("Usage", "", false);
+                    eb.addField("!" + name + " <number>",
+                            "Example: !" + name + " 10", false);
+                    event.reply(eb.build());
+                    return;
+                }
 
 
-        if (access) {
-
-            String[] args = event.getArgs().split(" ");
-            if (args.length > 1 || !args[1].matches("^[0-9]*$")) {
-                event.reply("Incorrect Usage.");
-
-                EmbedBuilder eb = new EmbedBuilder();
-                eb.setTitle("!" + name);
-                eb.addField("Usage", "", false);
-                eb.addField("!" + name + " <number>",
-                        "Example: !" + name + " 10", false);
-                event.reply(eb.build());
-                return;
+                TreasureHuntUtils.frequency = Integer.parseInt(event.getArgs().split(" ")[0]);
+                event.reply("The frequency of eggs has been set to 1 in every " + TreasureHuntUtils.frequency + " messages");
             }
-
-
-            TreasureHuntUtils.frequency = Integer.parseInt(event.getArgs().split(" ")[0]);
-            event.reply("The frequency of eggs has been set to 1 in every " + TreasureHuntUtils.frequency + " messages");
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

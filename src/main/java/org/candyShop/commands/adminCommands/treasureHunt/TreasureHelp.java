@@ -30,7 +30,7 @@ public class TreasureHelp extends Command {
             eb.addField("!StartHunt", "Starts the hunt", false);
             eb.addField("!StopHunt", "Stops the hunt", false);
             eb.addField("!" + TreasureHuntUtils.treasureName + "Hunt", "Sends a leaderboard of the current hunt", false);
-            eb.addField("!" + TreasureHuntUtils.treasureName + "HuntRate", "Sets the rate of treasure. Default 50", false);
+            eb.addField("!" + TreasureHuntUtils.treasureName + "Rate", "Sets the rate of treasure. Default 50", false);
             eb.addField("!" + TreasureHuntUtils.treasureName, "Sends the amount of treasure the sender has.", false);
 
         } else {
