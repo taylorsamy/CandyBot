@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class TreasureHuntUtils {
 
-    public static int frequency = 1;
-    public static int specialFreq = 2;
+    public static int frequency = 50;
+    public static int specialFreq = 10;
 
     public static String treasureName = "Candy";
 

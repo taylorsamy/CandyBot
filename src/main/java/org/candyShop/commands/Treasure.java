@@ -11,6 +11,8 @@ public class Treasure extends Command {
 
     public Treasure(String name) {
         this.name = name;
+        this.aliases = new String[1];
+        this.aliases[0] = name + "s";
     }
 
     @Override
