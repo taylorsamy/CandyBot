@@ -16,7 +16,7 @@ public class Treasure extends Command {
     @Override
     protected void execute(CommandEvent commandEvent) {
 
-        if (commandEvent.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
+
             boolean found = false;
 
             JSONObject treasure = FileUtils.readJSON("treasure");
@@ -40,5 +40,5 @@ public class Treasure extends Command {
 
         }
 
-    }
+
 }

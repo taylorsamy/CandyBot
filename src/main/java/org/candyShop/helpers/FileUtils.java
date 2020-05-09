@@ -37,7 +37,7 @@ public class FileUtils {
             obj.put("Members", list);
         }
 
-        JSONArray list = (JSONArray) obj.get("members");
+        JSONArray list = (JSONArray) obj.get("Members");
         JSONObject existingMember = null;
         Long tempContent = 0L;
 
@@ -58,7 +58,7 @@ public class FileUtils {
         member.put("MemberID", memberID);
         member.put("Content", tempContent + content);
         list.add(member);
-        obj.put("members", list);
+        obj.put("Members", list);
 
         try (FileWriter fw = new FileWriter("src/main/resources/" + file + ".json")) {
             fw.write(obj.toJSONString());

@@ -8,9 +8,17 @@ public class CandyBotUtils {
 
     public static boolean isAdmin(Member member) {
         boolean access = false;
-        for (Role r : member.getRoles()) {
 
+        if (member.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
+            return true;
+        }
+
+
+        for (Role r : member.getRoles()) {
             access = (r.getIdLong() == Main.ADMIN_ID) || (r.getIdLong() == Main.ADMINION_ID);
+            if (access) {
+                break;
+            }
         }
         return access;
     }
