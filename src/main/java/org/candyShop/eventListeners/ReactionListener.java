@@ -29,18 +29,15 @@ public class ReactionListener extends ListenerAdapter {
                     } else {
                         event.getTextChannel().retrieveMessageById(messageID).complete().delete().queue();
                     }
-                    FileUtils.writeJSON("treasure", event.getUserId(), 10);
+                    FileUtils.writeJSON("treasure", event.getUserId(), 5);
                     event.getChannel().sendMessage("A very special " + TreasureHuntUtils.treasureName + " was found by " + event.getUser().getAsMention()).queue();
 
                 } else {
                     event.getChannel().sendMessage(TreasureHuntUtils.treasureName + " found by " + event.getUser().getAsMention()).queue();
 
-                    event.getChannel().retrieveMessageById(messageID).complete().clearReactions().complete();
-
-
                     FileUtils.writeJSON("treasure", event.getUserId(), 1);
                 }
-
+                event.getChannel().retrieveMessageById(messageID).complete().clearReactions().complete();
                 TreasureHuntUtils.addRoles(event.getGuild(), event.getUserId());
 
                 event.getJDA().removeEventListener(this);

@@ -36,7 +36,6 @@ public class TreasureHunt extends Command {
         boolean access = CandyBotUtils.isAdmin(event.getMember());
 
         if (access) {
-            System.out.println(access + "hunt command");
 
             try {
 
