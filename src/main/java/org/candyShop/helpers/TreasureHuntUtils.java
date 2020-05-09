@@ -86,8 +86,13 @@ public class TreasureHuntUtils {
 //                roles.forEach((integer, s) -> guild.removeRoleFromMember(m, guild.getRoleById(s)).queue());
 
                 if (level > 1) {
-                    Role oldRole = guild.getRoleById(roles.get(level - 1));
-                    guild.removeRoleFromMember(m, oldRole);
+                    try {
+                        Role oldRole = guild.getRoleById(roles.get(level - 1));
+                        guild.removeRoleFromMember(m, oldRole).queue();
+                    }catch (Exception e) {
+                        System.out.println("roles exception");
+                        e.printStackTrace();
+                    }
                 }
 
                 guild.addRoleToMember(m, r).queue();

@@ -4,6 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import org.candyShop.helpers.CandyBotUtils;
 import org.candyShop.helpers.FileUtils;
 import org.candyShop.helpers.TreasureHuntUtils;
@@ -35,44 +36,54 @@ public class TreasureHunt extends Command {
         boolean access = CandyBotUtils.isAdmin(event.getMember());
 
         if (access) {
+            System.out.println(access + "hunt command");
 
-            Map<String, Long> results = new HashMap<>();
+            try {
 
-            JSONObject obj = FileUtils.readJSON("treasure");
-            if (obj != null) {
-                JSONArray members = (JSONArray) obj.get("Members");
+                Map<String, Long> results = new HashMap<>();
 
-                for (Object o : members) {
-                    if (o instanceof JSONObject) {
+                JSONObject obj = FileUtils.readJSON("treasure");
+                if (obj != null) {
+                    JSONArray members = (JSONArray) obj.get("Members");
 
-                        long content = (long) ((JSONObject) o).get("Content");
-                        String memberID = (String) ((JSONObject) o).get("MemberID");
-                        results.put(memberID, content);
+                    for (Object o : members) {
+                        if (o instanceof JSONObject) {
+
+                            long content = (long) ((JSONObject) o).get("Content");
+                            String memberID = (String) ((JSONObject) o).get("MemberID");
+                            results.put(memberID, content);
+                        }
                     }
+
+                    LinkedHashMap<String, Long> reverseSortedMap = new LinkedHashMap<>();
+
+                    results.entrySet()
+                            .stream()
+                            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                            .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+
+
+                    EmbedBuilder eb = new EmbedBuilder();
+
+                    reverseSortedMap.forEach((s, aLong) -> {
+
+                        eb.setColor(Color.green);
+                        eb.setTitle(TreasureHuntUtils.treasureName + " hunt results");
+
+
+                        eb.addField(event.getGuild().getMemberById(s).getEffectiveName(), String.valueOf(aLong), false);
+
+
+
+                        eb.setFooter("Thanks for playing!");
+
+                    });
+
+                    event.reply(eb.build());
+
                 }
-
-                LinkedHashMap<String, Long> reverseSortedMap = new LinkedHashMap<>();
-
-                results.entrySet()
-                        .stream()
-                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-
-
-                EmbedBuilder eb = new EmbedBuilder();
-
-                reverseSortedMap.forEach((s, aLong) -> {
-
-                    eb.setColor(Color.green);
-                    eb.setTitle(TreasureHuntUtils.treasureName + " hunt results");
-
-                    eb.addField(event.getGuild().getMemberById(s).getEffectiveName(), String.valueOf(aLong), false);
-                    eb.setFooter("Thanks for playing!");
-
-                });
-
-                event.reply(eb.build());
-
+            }catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
