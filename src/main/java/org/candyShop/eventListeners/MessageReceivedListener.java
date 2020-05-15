@@ -15,6 +15,8 @@ public class MessageReceivedListener extends ListenerAdapter {
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
 
 
+        if (event.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
+
             if (!event.getAuthor().isBot()) {
                 Random rand = new Random(System.currentTimeMillis());
                 int chance = rand.nextInt(TreasureHuntUtils.frequency) + 1;
@@ -47,7 +49,7 @@ public class MessageReceivedListener extends ListenerAdapter {
                     event.getJDA().addEventListener(listener);
                 }
             }
-
+        }
     }
 
     public void terminate(JDA jda) {

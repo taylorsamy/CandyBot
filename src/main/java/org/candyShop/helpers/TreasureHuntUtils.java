@@ -28,6 +28,8 @@ public class TreasureHuntUtils {
 
     public static Map<Integer, String> roles = new HashMap<>();
 
+    public static Member lastCollected = null;
+
 
     private static Color[] colours = new Color[20];
 
