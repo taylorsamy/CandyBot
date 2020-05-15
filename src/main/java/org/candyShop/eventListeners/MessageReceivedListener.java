@@ -15,7 +15,7 @@ public class MessageReceivedListener extends ListenerAdapter {
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
 
 
-        if (event.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
+//        if (event.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
 
             if (!event.getAuthor().isBot()) {
                 Random rand = new Random(System.currentTimeMillis());
@@ -50,7 +50,7 @@ public class MessageReceivedListener extends ListenerAdapter {
                 }
             }
         }
-    }
+//    }
 
     public void terminate(JDA jda) {
         jda.removeEventListener(this);
