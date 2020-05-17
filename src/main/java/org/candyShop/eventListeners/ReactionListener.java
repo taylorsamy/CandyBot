@@ -13,7 +13,7 @@ import java.util.Random;
 public class ReactionListener extends ListenerAdapter {
     private String messageID;
     private int find = 0;
-    private int chance = new Random().nextInt(3);
+    private int chance = new Random().nextInt(2);
 
     LinkedList<Integer> messageQueue = new LinkedList<>();
 
@@ -44,12 +44,12 @@ public class ReactionListener extends ListenerAdapter {
 
             if (event.getMessageId().equals(messageID)) {
 
-                System.out.println(find + " :: " + chance + "::" + TreasureHuntUtils.lastCollected.getEffectiveName());
-                if (event.getMember().getIdLong() != TreasureHuntUtils.lastCollected.getIdLong()) {
+//                System.out.println(find + " :: " + chance + "::" + TreasureHuntUtils.lastCollected.getEffectiveName());
+//                if (event.getMember().getIdLong() != TreasureHuntUtils.lastCollected.getIdLong()) {
 
 
                     if (chance == find) {
-                        TreasureHuntUtils.lastCollected = event.getMember();
+//                        TreasureHuntUtils.lastCollected = event.getMember();
                         if (event.getTextChannel().retrieveMessageById(messageID).complete().getAuthor().isBot()) {
                             if (TreasureHuntUtils.emote[2] != null) {
                                 event.getTextChannel().retrieveMessageById(messageID).complete().editMessage(TreasureHuntUtils.emote[2].getAsMention()).complete();
@@ -79,7 +79,7 @@ public class ReactionListener extends ListenerAdapter {
                 }
             }
         }
-    }
+//    }
 
     private void sendTryAgainMessage(@Nonnull MessageReactionAddEvent event) {
         if (messageQueue.size() == 0) {
