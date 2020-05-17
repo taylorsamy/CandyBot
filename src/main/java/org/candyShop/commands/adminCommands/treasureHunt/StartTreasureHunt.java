@@ -20,7 +20,7 @@ public class StartTreasureHunt extends Command {
         if (access) {
             event.getJDA().addEventListener(new MessageReceivedListener());
             event.reply("The hunt has begun!");
-            TreasureHuntUtils.lastCollected = event.getMember();
+//            TreasureHuntUtils.lastCollected = event.getMember();
         }
 
     }
