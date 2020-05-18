@@ -74,12 +74,12 @@ public class ReactionListener extends ListenerAdapter {
                     }
 
 
-                } else { //member collected the last one
-                    sendTryAgainMessage(event);
-                }
+//                } else { //member collected the last one
+//                    sendTryAgainMessage(event);
+//                }
             }
         }
-//    }
+    }
 
     private void sendTryAgainMessage(@Nonnull MessageReactionAddEvent event) {
         if (messageQueue.size() == 0) {
