@@ -19,6 +19,7 @@ import javax.security.auth.login.LoginException;
 public class Main extends ListenerAdapter {
     //guilds
     public static final long TESTY_TESY_ID = 683800435844186135L;
+    public static final long CNADY_EXTRA_EMOTES_ID = 706584023626940462L;
     public static final long CANDY_SHOP_ID = 625986582469410826L;
     //roles
     public static final long ADMINION_ID = 629021975788126219L;

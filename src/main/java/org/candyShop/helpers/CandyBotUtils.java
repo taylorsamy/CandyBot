@@ -9,7 +9,7 @@ public class CandyBotUtils {
     public static boolean isAdmin(Member member) {
         boolean access = false;
 
-        if (member.getGuild().getIdLong() == Main.TESTY_TESY_ID) {
+        if (member.getGuild().getIdLong() == Main.TESTY_TESY_ID || member.getGuild().getIdLong() == Main.CNADY_EXTRA_EMOTES_ID) {
             return true;
         }
 
