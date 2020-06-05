@@ -13,7 +13,7 @@ import java.util.Random;
 public class ReactionListener extends ListenerAdapter {
     private String messageID;
     private int find = 0;
-    private int chance = new Random().nextInt(2);
+    private int chance = new Random().nextInt(3);
 
     LinkedList<Integer> messageQueue = new LinkedList<>();
 
