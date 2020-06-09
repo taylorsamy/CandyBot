@@ -12,6 +12,7 @@ import org.candyShop.commands.Test;
 import org.candyShop.commands.Treasure;
 import org.candyShop.commands.adminCommands.JokeWarning;
 import org.candyShop.commands.adminCommands.treasureHunt.*;
+import org.candyShop.eventListeners.JoinListener;
 import org.candyShop.helpers.TreasureHuntUtils;
 
 import javax.security.auth.login.LoginException;
@@ -53,7 +54,7 @@ public class Main extends ListenerAdapter {
         JDA jda = JDABuilder.create(args[0], GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
 
                 .setStatus(OnlineStatus.ONLINE)
-                .addEventListeners(waiter, client.build())
+                .addEventListeners(waiter, client.build(), new JoinListener())
                 .build();
 
 

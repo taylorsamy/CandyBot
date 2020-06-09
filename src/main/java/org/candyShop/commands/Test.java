@@ -18,6 +18,7 @@ public class Test extends Command {
 
 
 
+
         for (Role r : event.getMember().getRoles()) {
             System.out.println(r.getId());
 
