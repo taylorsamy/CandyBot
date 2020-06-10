@@ -17,8 +17,8 @@ public class JoinListener extends ListenerAdapter {
         File file = new File("src/main/resources/images/candyWelcome.png");
 
         guild.getTextChannelById(640609641683746898L).sendMessage(":candy::lollipop:Hey " + member.getAsMention() +" :candy::lollipop:\n" +
-                "Please take a moment to read through the "+ guild.getTextChannelById(626471687935885332L).getAsMention() +" A member of the Candy Crew will be with you shortly :sparkles:").queue();
-        guild.getTextChannelById(640609641683746898L).sendFile(file).queue();
+                "Please take a moment to read through the "+ guild.getTextChannelById(626471687935885332L).getAsMention() +" A member of the Candy Crew will be with you shortly :sparkles:").addFile(file).queue();
+//        guild.getTextChannelById(640609641683746898L).sendFile(file).queue();
 
     }
 }
